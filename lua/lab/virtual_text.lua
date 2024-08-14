@@ -58,7 +58,7 @@ function VirtualText:render(opts)
 		-- It's from the current run (append):
 		if current.run_id == opts.run_id then
 			if opts.append then
-				opts.text = current.text .. " │ " .. opts.text
+				opts.text = current.text .. "" .. opts.text
 				mark_opts.id = current.markId
 			end
 		-- It's from a previous run (delete):
@@ -67,7 +67,7 @@ function VirtualText:render(opts)
 		end
 	end
 
-	mark_opts.virt_text = { { " " .. opts.icon .. " │ " .. opts.text .. " ", opts.hl } }
+	mark_opts.virt_text = { { " " .. opts.icon .. "" .. opts.text .. " ", opts.hl } }
 
 	local markId = api.nvim_buf_set_extmark(opts.buf_handle, self.namespace, opts.line_num, 0, mark_opts)
 
